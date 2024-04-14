@@ -37,6 +37,10 @@ lib.callback.register('wx_timesync:server:requestFreezeTime', function(source, d
     return true
 end)
 
+lib.callback.register('wx_timesync:server:checkPerms', function(source)
+    return IsAdmin(source)
+end)
+
 
 ---@TODO somehow prevent clients to have different time than others
 -- CreateThread(function()

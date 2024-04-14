@@ -180,5 +180,10 @@ RegisterNetEvent('wx_timesync:client:syncWeather', function(weather)
 end)
 
 RegisterCommand(wx.Command or 'timesync', function()
-    SyncMenu()
+    local admin = lib.callback.await('wx_timesync:server:checkPerms', false)
+    if admin then
+        SyncMenu()
+    else
+        lib.notify({ title = "Time Sync", description = "You are not allowed to use this command!", type = "error" })
+    end
 end, false)
